@@ -1,7 +1,17 @@
 # React Fluxible Intraspector
+[![npm version](https://badge.fury.io/js/react-fluxible-intraspector.svg)](https://badge.fury.io/js/react-fluxible-intraspector)
+
 This project is currently in development. Not recommended for use in production. APIs will change.
 
-## Usage
+## Component API
+### Intraspector
+
+| Attribute | Required? | Defauklt | Description |
+| --------- | --------- | -------- | ----------- |
+| context   | Yes       | None     | Fluxible Application Context |
+| traceKey  | Yes       | None     | Intraspector Trace Key |
+
+## Example Usage
 1) Register Store in Fluxible Application
 
 ```javascript
@@ -34,6 +44,14 @@ toggleDebug()
 ```
 
 ## Development Guide
+
+```
+git clone https://github.com/BespokeInsights/react-fluxible-intraspector.git
+cd react-fluxible-intraspector
+npm install
+```
+
+Make changes to files in the src/ folder. To build for release run `npm run compile`
 
 ## Related Modules
 Python Intraspector
