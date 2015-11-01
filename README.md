@@ -6,7 +6,7 @@ This project is currently in development. Not recommended for use in production.
 ## Component API
 ### Intraspector
 
-| Attribute | Required? | Defauklt | Description |
+| Attribute | Required? | Default | Description |
 | --------- | --------- | -------- | ----------- |
 | context   | Yes       | None     | Fluxible Application Context |
 | traceKey  | Yes       | None     | Intraspector Trace Key |
@@ -54,4 +54,7 @@ npm install
 Make changes to files in the src/ folder. To build for release run `npm run compile`
 
 ## Related Modules
-Python Intraspector
+[Python Intraspector](https://github.com/BespokeInsights/python-intraspector)
+
+## Thanks
+Proudly developed by [Bespoke Insights](http://BespokeInsights.github.io)
