@@ -20,7 +20,7 @@ export default createStore({
     return this.trace.get(key, new Immutable.List());
   },
 
-  switchDebug() {
+  toggleIntraspector() {
     this.debug = !this.debug;
     this.emitChange();
   },
@@ -32,8 +32,8 @@ export default createStore({
   initialize() {
     this.trace = new Immutable.Map();
     this.debug = false;
-    window.toggleDebug = () => {
-      this.switchDebug();
+    window.toggleIntraspector = () => {
+      this.toggleIntraspector();
     }.bind(this);
   }
 });

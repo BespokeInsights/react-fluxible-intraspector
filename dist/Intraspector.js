@@ -22,7 +22,8 @@ var TraceFrame = _react2['default'].createClass({
   displayName: 'TraceFrame',
 
   propTypes: {
-    traceframe: _react2['default'].PropTypes.object.isRequired
+    traceframe: _react2['default'].PropTypes.object.isRequired,
+    count: _react2['default'].PropTypes.number.isRequired
   },
   render: function render() {
     var _props$traceframe = this.props.traceframe;
@@ -32,6 +33,14 @@ var TraceFrame = _react2['default'].createClass({
     var module = _props$traceframe.module;
     var file = _props$traceframe.file;
     var documentation = _props$traceframe.documentation;
+
+    if (documentation === null || documentation === undefined) {
+      documentation = 'Intraspector cannot detect function documentation.';
+    }
+
+    if (source_code === null || source_code === undefined) {
+      source_code = 'Intraspector cannot detect function source code.';
+    }
 
     return _react2['default'].createElement(
       'div',
@@ -54,14 +63,22 @@ var TraceFrame = _react2['default'].createClass({
         source_line
       ),
       _react2['default'].createElement(
-        'code',
+        'pre',
         null,
-        documentation
+        _react2['default'].createElement(
+          'code',
+          null,
+          documentation
+        )
       ),
       _react2['default'].createElement(
-        'code',
+        'pre',
         null,
-        source_code
+        _react2['default'].createElement(
+          'code',
+          null,
+          source_code
+        )
       )
     );
   }
@@ -83,8 +100,8 @@ var Intraspector = _react2['default'].createClass({
   },
   renderTrace: function renderTrace(key) {
     var trace = this.getStore(_IntraspectorStore2['default']).getTrace(key).toJS();
-    return trace.map(function (traceframe) {
-      return _react2['default'].createElement(TraceFrame, { key: traceframe.call_timestamp, traceframe: traceframe });
+    return trace.map(function (traceframe, i) {
+      return _react2['default'].createElement(TraceFrame, { key: traceframe.call_timestamp, traceframe: traceframe, count: i });
     });
   },
   render: function render() {

@@ -1,6 +1,6 @@
 {
   "name": "react-fluxible-intraspector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Intraspector for Fluxible applications",
   "main": "index.js",
   "repository": {
@@ -16,7 +16,7 @@
     "compile": "gulp",
     "prepublish": "npm run compile"
   },
-  "dependencies": {
+  "peerDependencies": {
     "assert": "^1.3.0",
     "react": "^0.14.0",
     "fluxible-addons-react": "^0.2.0",

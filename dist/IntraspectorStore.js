@@ -36,7 +36,7 @@ exports['default'] = (0, _fluxibleAddonsCreateStore2['default'])({
     return this.trace.get(key, new _immutable2['default'].List());
   },
 
-  switchDebug: function switchDebug() {
+  toggleIntraspector: function toggleIntraspector() {
     this.debug = !this.debug;
     this.emitChange();
   },
@@ -50,8 +50,8 @@ exports['default'] = (0, _fluxibleAddonsCreateStore2['default'])({
 
     this.trace = new _immutable2['default'].Map();
     this.debug = false;
-    window.toggleDebug = (function () {
-      _this.switchDebug();
+    window.toggleIntraspector = (function () {
+      _this.toggleIntraspector();
     }).bind(this);
   }
 });

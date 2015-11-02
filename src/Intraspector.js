@@ -4,17 +4,27 @@ import IntraspectorStore from './IntraspectorStore';
 
 const TraceFrame = React.createClass({
   propTypes: {
-    traceframe: React.PropTypes.object.isRequired
+    traceframe: React.PropTypes.object.isRequired,
+    count: React.PropTypes.number.isRequired
   },
   render() {
-    const {name, source_code, source_line, module, file, documentation} = this.props.traceframe;
+    let {name, source_code, source_line, module, file, documentation} = this.props.traceframe;
+
+    if (documentation === null || documentation === undefined) {
+      documentation = 'Intraspector cannot detect function documentation.';
+    }
+
+    if (source_code === null || source_code === undefined) {
+      source_code = 'Intraspector cannot detect function source code.';
+    }
+
     return (
       <div>
         <h3>{name}</h3>
         <h4>{module}</h4>
         <h4>{file}:{source_line}</h4>
-        <code>{documentation}</code>
-        <code>{source_code}</code>
+        <pre><code>{documentation}</code></pre>
+        <pre><code>{source_code}</code></pre>
       </div>
     );
   }
@@ -34,8 +44,8 @@ export const Intraspector = React.createClass({
   },
   renderTrace(key) {
     const trace = this.getStore(IntraspectorStore).getTrace(key).toJS();
-    return trace.map((traceframe) => {
-      return <TraceFrame key={traceframe.call_timestamp} traceframe={traceframe} />
+    return trace.map((traceframe, i) => {
+      return <TraceFrame key={traceframe.call_timestamp} traceframe={traceframe} count={i} />
     });
   },
   render() {

@@ -40,7 +40,7 @@ render() {
 
 4) Toggle debug mode in console to display Intraspector Component
 ```
-toggleDebug()
+toggleIntraspector()
 ```
 
 ## Development Guide
