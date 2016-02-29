@@ -34,6 +34,6 @@ export default createStore({
     this.debug = false;
     window.toggleIntraspector = () => {
       this.toggleIntraspector();
-    }.bind(this);
+    };
   }
 });

@@ -1,29 +1,30 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+exports.Intraspector = undefined;
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _fluxibleAddonsReactFluxibleMixin = require('fluxible-addons-react/FluxibleMixin');
+var _FluxibleMixin = require('fluxible-addons-react/FluxibleMixin');
 
-var _fluxibleAddonsReactFluxibleMixin2 = _interopRequireDefault(_fluxibleAddonsReactFluxibleMixin);
+var _FluxibleMixin2 = _interopRequireDefault(_FluxibleMixin);
 
 var _IntraspectorStore = require('./IntraspectorStore');
 
 var _IntraspectorStore2 = _interopRequireDefault(_IntraspectorStore);
 
-var TraceFrame = _react2['default'].createClass({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TraceFrame = _react2.default.createClass({
   displayName: 'TraceFrame',
 
   propTypes: {
-    traceframe: _react2['default'].PropTypes.object.isRequired,
-    count: _react2['default'].PropTypes.number.isRequired
+    traceframe: _react2.default.PropTypes.object.isRequired,
+    count: _react2.default.PropTypes.number.isRequired
   },
   render: function render() {
     var _props$traceframe = this.props.traceframe;
@@ -34,6 +35,7 @@ var TraceFrame = _react2['default'].createClass({
     var file = _props$traceframe.file;
     var documentation = _props$traceframe.documentation;
 
+
     if (documentation === null || documentation === undefined) {
       documentation = 'Intraspector cannot detect function documentation.';
     }
@@ -42,39 +44,39 @@ var TraceFrame = _react2['default'].createClass({
       source_code = 'Intraspector cannot detect function source code.';
     }
 
-    return _react2['default'].createElement(
+    return _react2.default.createElement(
       'div',
       null,
-      _react2['default'].createElement(
+      _react2.default.createElement(
         'h3',
         null,
         name
       ),
-      _react2['default'].createElement(
+      _react2.default.createElement(
         'h4',
         null,
         module
       ),
-      _react2['default'].createElement(
+      _react2.default.createElement(
         'h4',
         null,
         file,
         ':',
         source_line
       ),
-      _react2['default'].createElement(
+      _react2.default.createElement(
         'pre',
         null,
-        _react2['default'].createElement(
+        _react2.default.createElement(
           'code',
           null,
           documentation
         )
       ),
-      _react2['default'].createElement(
+      _react2.default.createElement(
         'pre',
         null,
-        _react2['default'].createElement(
+        _react2.default.createElement(
           'code',
           null,
           source_code
@@ -84,32 +86,32 @@ var TraceFrame = _react2['default'].createClass({
   }
 });
 
-var Intraspector = _react2['default'].createClass({
+var Intraspector = exports.Intraspector = _react2.default.createClass({
   displayName: 'Intraspector',
 
-  mixins: [_fluxibleAddonsReactFluxibleMixin2['default']],
+  mixins: [_FluxibleMixin2.default],
   propTypes: {
-    context: _react2['default'].PropTypes.object.isRequired,
-    traceKey: _react2['default'].PropTypes.string.isRequired
+    context: _react2.default.PropTypes.object.isRequired,
+    traceKey: _react2.default.PropTypes.string.isRequired
   },
   statics: {
-    storeListeners: [_IntraspectorStore2['default']]
+    storeListeners: [_IntraspectorStore2.default]
   },
   onChange: function onChange() {
     this.forceUpdate();
   },
   renderTrace: function renderTrace(key) {
-    var trace = this.getStore(_IntraspectorStore2['default']).getTrace(key).toJS();
+    var trace = this.getStore(_IntraspectorStore2.default).getTrace(key).toJS();
     return trace.map(function (traceframe, i) {
-      return _react2['default'].createElement(TraceFrame, { key: traceframe.call_timestamp, traceframe: traceframe, count: i });
+      return _react2.default.createElement(TraceFrame, { key: traceframe.call_timestamp, traceframe: traceframe, count: i });
     });
   },
   render: function render() {
-    if (!this.getStore(_IntraspectorStore2['default']).getStatus()) return false;
-    return _react2['default'].createElement(
+    if (!this.getStore(_IntraspectorStore2.default).getStatus()) return false;
+    return _react2.default.createElement(
       'div',
       null,
-      _react2['default'].createElement(
+      _react2.default.createElement(
         'h2',
         null,
         'Intraspector Trace: ',
@@ -120,4 +122,3 @@ var Intraspector = _react2['default'].createClass({
     );
   }
 });
-exports.Intraspector = Intraspector;
