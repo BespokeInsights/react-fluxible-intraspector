@@ -1,6 +1,6 @@
 {
   "name": "react-fluxible-intraspector",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Intraspector for Fluxible applications",
   "main": "index.js",
   "repository": {

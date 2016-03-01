@@ -4,7 +4,10 @@
  */
 'use strict';
 
+var IntraspectorStore = require('./dist/IntraspectorStore').IntraspectorStore;
+var Intraspector = require('./dist/Intraspector').Intraspector;
+
 module.exports = {
-    IntraspectorStore: require('./dist/IntraspectorStore'),
-    Intraspector: require('./dist/Intraspector').Intraspector
+    IntraspectorStore: IntraspectorStore,
+    Intraspector: Intraspector
 };
